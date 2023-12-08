@@ -1,0 +1,208 @@
+@font-face {
+    font-family: Overpass;
+    font-style:normal;
+    font-weight: 700;
+    src:local("Overpass Bold"), local("Overpass-Bold") url(./fonts/Overpass-Bold.ttf);
+}
+
+@font-face{
+    font-family:Overpass;
+    font-style:normal;
+    font-weight:400;
+    src: local("Overpass Regular"), local("Overpass-Regular") url(./fonts/Overpass-Regular.ttf)
+}
+
+
+:root{
+    --orange: hsl(25, 97%, 53%); 
+    --white:hsl(0, 0%, 100%);
+    --light-grey:hsl(217, 12%, 63%);
+    --medium-grey:hsl(216, 12%, 54%);
+    --dark-blue:hsl(213, 19%, 18%);
+    --very-dark-blue:hsl(216, 12%, 8%);
+    --gradient: linear-gradient(to bottom, hsl(215, 20%, 17%), hsl(215, 24%, 12%));
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+p {
+  margin: unset;
+}
+
+
+
+/*  core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/*  core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  display:grid;
+  place-items:center;
+  min-block-size:100vh;
+  background-color: var(--very-dark-blue);
+  line-height: 1.5;
+  font:15px/1.6 Overpass, ui-sans-serif, system-ui, -apple-system, 
+  BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", 
+  Arial, "Noto Sans", sans-serif, "Apple Color Emoji", 
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
+}
+
+
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+input,
+button{
+  font: inherit;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}   
+
+.text-center{
+    text-align:center;
+}
+
+.rating-text{
+    margin-inline:auto;
+    padding-inline:1.25rem;
+    color:var(--orange);
+    background-color: var(--dark-blue);
+    --size:2rem;
+    border-radius:var(--size);
+    height:var(--size);
+    line-height:var(--size);
+    width:max-content;
+    margin-block:2rem;
+}
+
+.illustration{
+    margin-inline:auto;
+
+}
+
+h1{
+    color:var(--white);
+    font-size:28px;
+    line-height:1.25;
+    margin-bottom:0.4375rem;
+}
+
+p{
+    color:var(--light-grey);
+
+}
+
+main{
+  background-image:var(--gradient);
+  max-width:412px;
+  width:100%;
+  border-radius:1.875rem;
+  padding:2rem;
+}
+
+.logo{
+    --size:3rem;
+    background-color:var(--dark-blue);
+    width:var(--size);
+    height:var(--size);
+    padding:1rem;
+    border-radius:var(--size);
+    margin-bottom:1.875rem;
+}
+
+.button{
+    --size:45px;
+    background-color:var(--orange);
+    border:unset;
+    color:var(--white);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    height:var(--size);
+    border-radius:var(--size);
+    width:100%;
+    cursor:pointer;
+    appearance:none;
+    transition:background-color .15s linear, color 0.15s linear;
+}
+
+.button:is(:hover, :focus-visible){
+    background-color:var(--white);
+    color:var(--orange);
+    outline:none;
+}
+
+.rating-group{
+    display:flex;
+    justify-content:space-between;
+    margin-block:1.5rem 2rem;
+}
+
+.input-radio .control{
+    --size:3.1875rem;
+    display:block;
+    background-color:var(--dark-blue);
+    color:var(--medium-grey);
+    width:var(--size);
+    height:var(--size);
+    text-align:center;
+    line-height:var(--size);
+    border-radius:var(--size);
+    cursor:pointer;
+    font-size:16px;
+    font-weight:700;
+    transition:background-color 0.15s linear, color 0.15s linear;
+}
+
+.input-radio input:checked + .control{
+    background-color:var(--light-grey);
+    color:var(--white);
+}
+
+.input-radio:hover .control,
+.input-radio input:focus + .control{
+    background-color:var(--orange);
+    color:var(--white)
+}
